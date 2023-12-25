@@ -150,7 +150,7 @@ module.exports = async function gitDiffApply({
   async function applyPatch(patchFile) {
     // --whitespace=fix seems to prevent any unnecessary conflicts with line endings
     // https://stackoverflow.com/questions/6308625/how-to-avoid-git-apply-changing-line-endings#comment54419617_11189296
-    await spawn('git', ['apply', '--whitespace=fix', patchFile], { cwd: _tmpDir });
+    await spawn('git', ['apply', '--whitespace=fix', "--allow-empty", patchFile], { cwd: _tmpDir });
   }
 
   async function go() {
